@@ -281,6 +281,7 @@ function Controller() {
         })
     };
     this.restartGame = function() {
+        self.displayCards();
         self.model.resetModel();
         self.view.updateStars(self.model.moves);
         self.view.updateMoves(self.model.moves);
@@ -321,6 +322,7 @@ function Controller() {
     };
 }
 Controller.prototype.init = function() {
+    this.displayCards();
     this.AddClickEvent();
 
 };
