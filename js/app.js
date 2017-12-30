@@ -58,6 +58,7 @@ Model.prototype.increaseTime = function() {
 
 //View component - responsible for the html and for everything that the user see
 function View() {
+    this.endMoves = document.querySelector(".end-moves");
     this.endTime = document.querySelector(".end-time");
     this.rating = document.querySelector(".stars1");
     this.winGameButton = document.getElementById("winGame");
@@ -155,7 +156,7 @@ function Controller() {
 
     };
     //Add the time and the stars to the end game modal window, it takes the number of the moves and the time as //parameters
-    this.appendStarsToModal = function(selector, moves, time, timeselector) {
+    this.appendStarsToModal = function(selector, moves, time, timeselector, endmoves) {
         if (moves > 20) {
             selector.innerHTML = '<li><i class="fa fa-star fa-2x yellow"></i></li>'
         } else if (moves > 15) {
@@ -164,6 +165,7 @@ function Controller() {
             selector.innerHTML = '<li><i class="fa fa-star fa-2x yellow"></i></li><li><i class="fa fa-star fa-2x yellow"></i></li><li><i class="fa fa-star fa-2x yellow"></i></li>'
         }
         timeselector.innerHTML = "Your time is " + time;
+        endmoves.innerHTML = 'Your moves are ' + moves;
     }
     this.transformSeconds = function(sec) {
         var hours = Math.floor(sec / 3600);
@@ -223,7 +225,7 @@ function Controller() {
                 that.view.updateStars(that.model.moves);
                 that.model.checkEndGame(that.view.modalEnd);
                 //this method add that stars and the time to the end game modal window
-                that.appendStarsToModal(that.view.rating, that.model.moves, that.transformSeconds(that.model.time), that.view.endTime);
+                that.appendStarsToModal(that.view.rating, that.model.moves, that.transformSeconds(that.model.time), that.view.endTime, that.view.endMoves);
             }
         })
     };
