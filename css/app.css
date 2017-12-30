@@ -215,3 +215,34 @@ h1 {
 .hide {
     display: none;
 }
+
+.open {
+    display: block;
+}
+
+.timer {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.stars1 {
+    list-style: none;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+.stars1 li {
+    margin: 0px;
+    padding: 5px;
+    display: inline;
+}
+
+.end-time {
+    text-align: center;
+    padding: 5px 10px;
+}

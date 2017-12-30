@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Matching Game</title>
     <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="css/app.css">
@@ -25,7 +26,9 @@
             </ul>
 
             <span class="moves">0</span> Moves
+            <div class="timer">
 
+            </div>
             <div class="restart">
                 <i class="fa fa-repeat"></i>
             </div>
@@ -40,16 +43,15 @@
 
         </div>
         <!--Modal end-->
-        <div class="modal-end">
+        <div class="modal-end hide">
             <div class="modal-content">
                 <h1>Congratulations, you won!</h1>
-                <ul class="stars">
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
-                    <li><i class="fa fa-star"></i></li>
+                <ul class="stars1">
+
                 </ul>
+                <div class="end-time"></div>
                 <p>Pres OK to start new game!!</p>
-                <button id="startGame" class="ok">OK</button>
+                <button id="winGame" class="ok">OK</button>
             </div>
 
         </div>
@@ -57,7 +59,7 @@
 
 
         <ul class="deck">
-            <li class="card">
+            <!-- <li class="card">
                 <i class="fa fa-diamond"></i>
             </li>
             <li class="card">
@@ -104,7 +106,7 @@
             </li>
             <li class="card">
                 <i class="fa fa-cube"></i>
-            </li>
+            </li> -->
         </ul>
     </div>
 
