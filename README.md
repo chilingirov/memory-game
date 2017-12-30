@@ -2,7 +2,7 @@
 
 ## This project is part of the Udacity's Front-End Developer Nanodegree
 
-The app is built in Vanila JavaScript. The project shows implementation of model-view-controller design pattern.
+The app is built in Vanilla JavaScript. The project shows implementation of model-view-controller design pattern.
 
 ##Installation
 
