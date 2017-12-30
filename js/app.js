@@ -13,7 +13,7 @@ function shuffle(array) {
     }
 
     return array;
-};
+}
 
 //Model - holds the data of the app
 function Model() {
@@ -25,7 +25,7 @@ function Model() {
     this.openCards = 0;
     this.show = [];
     this.symbols = ["fa fa-diamond", "fa fa-diamond", "fa fa-paper-plane", "fa fa-paper-plane", "fa fa-anchor", "fa fa-anchor", "fa fa-bolt", "fa fa-bolt", "fa fa-cube", "fa fa-cube", "fa fa-leaf", "fa fa-leaf", "fa fa-bicycle", "fa fa-bicycle", "fa fa-bomb", "fa fa-bomb"];
-};
+}
 //Increase the moves
 Model.prototype.increaseMoves = function() {
     this.moves++;
@@ -39,7 +39,7 @@ Model.prototype.checkEndGame = function(selector) {
     if (this.matches === 8) {
         selector.className += " open";
         this.endGameStatus = true;
-    };
+    }
 };
 //Reset all the variables inside of the model component
 Model.prototype.resetModel = function() {
@@ -64,7 +64,7 @@ function View() {
     this.winGameButton = document.getElementById("winGame");
     this.timer = document.querySelector(".timer");
     this.startGameButton = document.getElementById("startGame");
-    this.modalEnd = document.querySelector(".modal-end")
+    this.modalEnd = document.querySelector(".modal-end");
     this.modalStart = document.querySelector(".modal");
     this.scores = document.querySelector(".score-panel");
     this.numberMoves = document.querySelector(".moves");
@@ -73,7 +73,7 @@ function View() {
     this.deck = document.querySelector(".deck");
     this.newGame = document.getElementById("new-game");
     this.cards = document.querySelectorAll(".card");
-};
+}
 
 //Create the cards inside of the deck element and take the array with random symbols for a parameter
 View.prototype.createCardsHtml = function(array) {
@@ -85,12 +85,12 @@ View.prototype.createCardsHtml = function(array) {
 //Update the strar - it takes the model moves for an argument and calculate the stars
 View.prototype.updateStars = function(moves) {
     for (var i = 0; i < this.stars.length; i++) {
-        if (moves > 20) {
+        if (moves > 30) {
             this.stars[2].className = "fa fa-star-o";
-        } else if (moves > 15) {
+        } else if (moves > 25) {
             this.stars[1].className = "fa fa-star-o";
-        } else if (moves > 10) {
-            this.stars[0].className = "fa fa-star-o";;
+        } else if (moves > 20) {
+            this.stars[0].className = "fa fa-star-o";
         } else {
             for (var j = 0; j < this.stars.length; j++) {
                 this.stars[j].className = "fa fa-star";
@@ -134,7 +134,7 @@ function Controller() {
                     that.model.show[1].className = "card";
                     console.log("No match");
                     that.model.show = [];
-                }, 300)
+                }, 300);
 
             }
         }
@@ -143,7 +143,7 @@ function Controller() {
     this.restart = function() {
         this.view.restart.addEventListener("click", function() {
             that.resetGame();
-        })
+        });
     };
     this.startTimer = function() {
         setInterval(function() {
@@ -157,23 +157,23 @@ function Controller() {
     };
     //Add the time and the stars to the end game modal window, it takes the number of the moves and the time as //parameters
     this.appendStarsToModal = function(selector, moves, time, timeselector, endmoves) {
-        if (moves > 20) {
-            selector.innerHTML = '<li><i class="fa fa-star fa-2x yellow"></i></li>'
-        } else if (moves > 15) {
-            selector.innerHTML = '<li><i class="fa fa-star fa-2x yellow"></i></li><li><i class="fa fa-star fa-2x yellow"></i></li>'
+        if (moves > 30) {
+            selector.innerHTML = '<li><i class="fa fa-star fa-2x yellow"></i></li>';
+        } else if (moves > 25) {
+            selector.innerHTML = '<li><i class="fa fa-star fa-2x yellow"></i></li><li><i class="fa fa-star fa-2x yellow"></i></li>';
         } else {
-            selector.innerHTML = '<li><i class="fa fa-star fa-2x yellow"></i></li><li><i class="fa fa-star fa-2x yellow"></i></li><li><i class="fa fa-star fa-2x yellow"></i></li>'
+            selector.innerHTML = '<li><i class="fa fa-star fa-2x yellow"></i></li><li><i class="fa fa-star fa-2x yellow"></i></li><li><i class="fa fa-star fa-2x yellow"></i></li>';
         }
         timeselector.innerHTML = "Your time is " + time;
         endmoves.innerHTML = 'Your moves are ' + moves;
-    }
+    };
     this.transformSeconds = function(sec) {
         var hours = Math.floor(sec / 3600);
         var minutes = Math.floor((sec - (hours * 3600)) / 60);
         var seconds = sec - (hours * 3600) - (minutes * 60);
 
         // round seconds
-        seconds = Math.round(seconds * 100) / 100
+        seconds = Math.round(seconds * 100) / 100;
 
         if (hours < 10) { hours = "0" + hours; }
         if (minutes < 10) { minutes = "0" + minutes; }
@@ -197,14 +197,14 @@ function Controller() {
         this.view.winGameButton.addEventListener("click", function() {
             that.view.modalEnd.classList.remove("open");
             that.resetGame();
-        })
+        });
     };
     //Close the modal window before you start the game
     this.closeModalStart = function() {
         this.view.startGameButton.addEventListener("click", function() {
             that.view.modalStart.className += " hide";
             that.startTimer();
-        })
+        });
     };
     //Call the method that creates the random card's html
     this.displayCards = function() {
@@ -227,7 +227,7 @@ function Controller() {
                 //this method add that stars and the time to the end game modal window
                 that.appendStarsToModal(that.view.rating, that.model.moves, that.transformSeconds(that.model.time), that.view.endTime, that.view.endMoves);
             }
-        })
+        });
     };
 }
 //Start the game
